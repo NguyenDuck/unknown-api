@@ -1,22 +1,22 @@
 {
-  "name": "unknown-api",
-  "version": "1.0.0",
-  "main": "src/main.ts",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/NguyenDuck/unknown-api.git"
-  },
-  "author": "NguyenDuck",
-  "license": "AGPL-3.0",
-  "bugs": {
-    "url": "https://github.com/NguyenDuck/unknown-api/issues"
-  },
-  "homepage": "https://github.com/NguyenDuck/unknown-api#readme",
-  "description": ""
+	"name": "unknown-api",
+	"version": "1.0.0",
+	"main": "src/index.ts",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/NguyenDuck/unknown-api.git"
+	},
+	"author": "NguyenDuck",
+	"license": "AGPL-3.0",
+	"bugs": {
+		"url": "https://github.com/NguyenDuck/unknown-api/issues"
+	},
+	"homepage": "https://github.com/NguyenDuck/unknown-api#readme",
+	"description": ""
 }
