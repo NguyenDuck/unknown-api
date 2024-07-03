@@ -4,6 +4,8 @@
 		"target": "ESNext",
 		"rootDir": "src",
 		"outDir": "dist",
-		"incremental": true
-	}
+		"incremental": true,
+		"esModuleInterop": true
+	},
+	"exclude": ["tests"]
 }
