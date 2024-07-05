@@ -1,6 +1,11 @@
+export { Exporter } from './types/exporter/Exporter'
+export { MinecraftType } from './types/exporter/MinecraftType'
+export { PathType } from './types/exporter/PathType'
+
 export { Dependency } from './types/manifest/Dependency'
 export { Manifest } from './types/manifest/Manifest'
 export { ManifestType } from './types/manifest/ManifestType'
+export { Metadata } from './types/manifest/metadata/Metadata'
 export { Module } from './types/manifest/module/Module'
 export { ModuleType } from './types/manifest/module/ModuleType'
 export { ScriptModules } from './types/manifest/module/ScriptModules'

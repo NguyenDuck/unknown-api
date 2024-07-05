@@ -1,5 +1,5 @@
 {
-	"name": "unknown-api",
+	"name": "mcaddon-api",
 	"version": "1.0.0",
 	"main": "dist/index.js",
 	"types": "src/index.ts",
@@ -8,18 +8,18 @@
 		"dev": "tsc -w",
 		"test": "jest",
 		"test-silent": "jest --silent",
-		"test-watch": "jest --watch --roots src tests"
+		"test-watch": "jest --watch --roots dist tests"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com/NguyenDuck/unknown-api.git"
+		"url": "git+ssh://git@github.com/NguyenDuck/mcaddon-api.git"
 	},
 	"author": "NguyenDuck",
 	"license": "AGPL-3.0",
 	"bugs": {
-		"url": "https://github.com/NguyenDuck/unknown-api/issues"
+		"url": "https://github.com/NguyenDuck/mcaddon-api/issues"
 	},
-	"homepage": "https://github.com/NguyenDuck/unknown-api",
+	"homepage": "https://github.com/NguyenDuck/mcaddon-api",
 	"description": "",
 	"devDependencies": {
 		"@types/jest": "^29.5.12",

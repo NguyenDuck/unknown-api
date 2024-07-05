@@ -2,7 +2,6 @@ import { validate } from 'uuid'
 import { assignIfNotUndefined } from '../../utils/assignIfNotUndefined'
 import { Compileable } from '../Compilable'
 import { Version } from '../version/Version'
-import { Manifest } from './Manifest'
 import { ScriptModules } from './module/ScriptModules'
 
 export class Dependency implements Compileable {
@@ -42,10 +41,6 @@ export class Dependency implements Compileable {
 
 	get version() {
 		return this._version
-	}
-
-	static from(manifest: Manifest): Dependency {
-		return new Dependency(manifest.uuid, manifest.version)
 	}
 
 	compile() {

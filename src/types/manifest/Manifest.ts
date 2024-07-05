@@ -7,6 +7,7 @@ import { MinEngineVersion } from '../version/MinEngineVersion'
 import { Version } from '../version/Version'
 import { Dependency } from './Dependency'
 import { ManifestType } from './ManifestType'
+import { Metadata } from './metadata/Metadata'
 import { Module, acceptedManifestTypes } from './module/Module'
 
 export class Manifest implements Compileable {
@@ -20,8 +21,9 @@ export class Manifest implements Compileable {
 
 	private modules: Module[] = []
 	private dependencies: Dependency[] = []
+	public metadata: Metadata = new Metadata()
 
-	constructor(private type: ManifestType, public min_engine_version?: MinEngineVersion) {}
+	constructor(public readonly type: ManifestType, public min_engine_version: MinEngineVersion = [1, 2, 8]) {}
 
 	set uuid(uuid: string) {
 		if (!validate(uuid)) {
@@ -32,7 +34,7 @@ export class Manifest implements Compileable {
 	}
 
 	get uuid() {
-		return this._uuid ?? createUUIDFromString(`name:${this.name}description:${this.description}`)
+		return this._uuid ?? createUUIDFromString(`type:${this.type}name:${this.name}description:${this.description}`)
 	}
 
 	/**
@@ -51,29 +53,32 @@ export class Manifest implements Compileable {
 		}
 	}
 
-	addDependency(dependency: Dependency) {
+	addDependency(dependency: Dependency | Manifest) {
+		if (dependency instanceof Manifest) {
+			dependency = new Dependency(dependency.uuid, dependency.version)
+		}
 		this.dependencies.push(dependency)
 	}
 
 	compile(): object {
 		const result = { format_version: this.format_version }
 
+		const mtdt = this.metadata.compile()
+		if (Object.keys(mtdt).length) result['metadata'] = mtdt
+
 		const header = { name: this.name, version: this.version }
 
-		// Required
 		assignIfNotUndefined(header, 'description', this.description)
 		assignIfNotUndefined(header, 'uuid', this.uuid)
-		// Optional
 		assignIfNotUndefined(header, 'min_engine_version', this.min_engine_version)
+
 		assignIfNotUndefined(header, 'base_game_version', this.base_game_version)
 		assignIfNotUndefined(header, 'lock_template_options', this.lock_template_options)
 
 		result['header'] = header
-
 		result['modules'] = this.modules.map(v => v.compile())
 
 		if (this.dependencies.length) result['dependencies'] = this.dependencies.map(v => v.compile())
-
 		return result
 	}
 }
